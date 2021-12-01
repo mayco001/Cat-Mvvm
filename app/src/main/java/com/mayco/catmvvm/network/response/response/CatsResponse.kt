@@ -6,6 +6,9 @@ data class CatsResponse(
     @Json(name = "id")
     var id: String?,
 
-    @Json(name = "url")
-    var url: String?
+    @Json(name = "created_at")
+    var created_at: String?,
+
+    @Json(name = "tags")
+    var tags: List<String>?
 )

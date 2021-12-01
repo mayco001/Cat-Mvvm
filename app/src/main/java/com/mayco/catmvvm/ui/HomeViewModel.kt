@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mayco.catmvvm.network.response.response.CatsResponse
 import com.mayco.catmvvm.repository.CatsRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class HomeViewModel(private val repository: CatsRepository) : ViewModel(), CoroutineScope {
@@ -17,19 +14,24 @@ class HomeViewModel(private val repository: CatsRepository) : ViewModel(), Corou
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO + job
 
-    private val _newsList = MutableLiveData<List<CatsResponse>>()
-    val newList: LiveData<List<CatsResponse>>
-        get() = _newsList
+    private val _returnApi = MutableLiveData<List<CatsResponse>>()
+    val returnApi: LiveData<List<CatsResponse>>
+        get() = _returnApi
 
-    fun getCats(){
+
+    fun getCats() {
         launch {
+
             try {
-                val response = repository.getCats(15,0)
-                    if(response.isNotEmpty()){
+                val response = repository.getCats()
 
-                    }
-            } catch (e: Exception){
-
+                if (response.isSuccessful) {
+                    _returnApi.postValue(response.body())
+                } else {
+                    print(response)
+                }
+            } catch (e: Throwable) {
+              print(e)
             }
         }
     }
