@@ -1,10 +1,11 @@
 package com.mayco.catmvvm.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mayco.catmvvm.R
+import com.mayco.catmvvm.adapter.CatsAdapter
 import com.mayco.catmvvm.databinding.ActivityHomeBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -13,6 +14,8 @@ class HomeActivity : AppCompatActivity() {
     private val viewModel: HomeViewModel by viewModel()
     lateinit var binding: ActivityHomeBinding
 
+    private lateinit var catsAdapter: CatsAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,11 +23,20 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.getCats()
 
+        iniRecyclerView()
 
-        viewModel.returnApi.observeForever {
-            binding.textView.text = it[0].created_at
 
-            Glide.with(binding.imageViewCat.context).load( "https://cataas.com/c/"+ it[1].id).into(binding.imageViewCat)
-        }
+//var n1 = (0..87).random()
+
+
+    }
+
+
+    private fun iniRecyclerView() {
+
+        this.catsAdapter = CatsAdapter()
+        binding.recy.layoutManager = LinearLayoutManager(this@HomeActivity)
+        binding.recy.adapter = this.catsAdapter
+
     }
 }
