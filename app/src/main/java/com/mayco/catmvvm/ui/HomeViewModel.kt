@@ -19,6 +19,12 @@ class HomeViewModel(private val repository: CatsRepository) : ViewModel(), Corou
         get() = _returnApi
 
 
+
+
+
+
+
+
     fun getCats() {
         launch {
 

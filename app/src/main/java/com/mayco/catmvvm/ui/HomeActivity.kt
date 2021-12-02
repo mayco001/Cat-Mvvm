@@ -3,6 +3,7 @@ package com.mayco.catmvvm.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mayco.catmvvm.R
 import com.mayco.catmvvm.adapter.CatsAdapter
@@ -26,7 +27,10 @@ class HomeActivity : AppCompatActivity() {
         iniRecyclerView()
 
 
-//var n1 = (0..87).random()
+        viewModel.returnApi.observeForever { cats ->
+            catsAdapter.items = cats
+        }
+
 
 
     }
