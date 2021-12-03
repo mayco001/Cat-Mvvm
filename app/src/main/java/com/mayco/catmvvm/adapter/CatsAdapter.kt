@@ -46,8 +46,8 @@ class CatsAdapter : RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         fun bind(cat: CatsResponse) {
 
             val requestOptions = RequestOptions()
-                .placeholder(R.color.black)
-                .error(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.cat1)
+                .error(R.drawable.error)
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .load("https://cataas.com/c/" + cat.id)

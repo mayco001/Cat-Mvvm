@@ -18,13 +18,6 @@ class HomeViewModel(private val repository: CatsRepository) : ViewModel(), Corou
     val returnApi: LiveData<List<CatsResponse>>
         get() = _returnApi
 
-
-
-
-
-
-
-
     fun getCats() {
         launch {
 
