@@ -49,7 +49,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun getError() = TestCoroutineDispatcher().runBlockingTest {
+    fun getNotNull() = TestCoroutineDispatcher().runBlockingTest {
         val catsResponse: List<CatsResponse> = arrayListOf()
 
         Mockito.`when`(repository.getCats()).thenReturn(Response.success(catsResponse))
@@ -58,5 +58,19 @@ class HomeViewModelTest {
         viewModel.getCats()
 
         Assert.assertNotNull(viewModel.getCats())
+        Assert.assertNotNull(viewModel.returnApi)
+    }
+
+    @Test
+    fun erro() = TestCoroutineDispatcher().runBlockingTest {
+
+        val catsResponse: List<CatsResponse> = listOf()
+
+        Mockito.`when`(repository.getCats()).thenReturn(Response.success(catsResponse))
+
+        viewModel.returnApi.observeForever(catObserver)
+        viewModel.getCats()
+
+
     }
 }
