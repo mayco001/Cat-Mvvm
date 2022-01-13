@@ -27,12 +27,11 @@ class CatAplication : Application() {
             androidLogger(Level.ERROR)
             androidContext(this@CatAplication)
             androidFileProperties()
-            modules(applicationModulo, repositoryModule,viewModelModule)
+            modules(applicationModulo, repositoryModule, viewModelModule)
         }
     }
 
     private fun setupHawk() = Hawk.init(this).build()
-
 
     companion object {
         lateinit var instace: Context
