@@ -30,7 +30,7 @@ class HomeViewModel(private val repository: CatsRepository) : ViewModel(), Corou
                     print(response)
                 }
             } catch (e: Throwable) {
-              print(e)
+                print(e)
             }
         }
     }
