@@ -67,7 +67,7 @@ class HomeViewModelTest {
         Assert.assertNotNull(viewModel.returnApi)
     }
 
-	//Error
+	
     @Test
     fun erro() = TestCoroutineDispatcher().runBlockingTest {
 
