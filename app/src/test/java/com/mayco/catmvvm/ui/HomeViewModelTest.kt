@@ -29,6 +29,8 @@ import retrofit2.Response
 
 class HomeViewModelTest {
 
+	//Novo
+
     private val dispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
 
     private lateinit var viewModel: HomeViewModel
