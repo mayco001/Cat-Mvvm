@@ -29,7 +29,7 @@ import retrofit2.Response
 
 class HomeViewModelTest {
 
-	//Novo
+	
 
     private val dispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
 
@@ -67,7 +67,7 @@ class HomeViewModelTest {
         Assert.assertNotNull(viewModel.returnApi)
     }
 
-
+	//Error
     @Test
     fun erro() = TestCoroutineDispatcher().runBlockingTest {
 
