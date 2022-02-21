@@ -12,7 +12,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 val applicationModulo = module {
     single { provideHttpLoggingInterceptor() }
     single { provideOkHttp(get()) }
@@ -27,7 +26,6 @@ val repositoryModule = module {
     factory { CatsRepository(get()) }
 }
 
-
 private fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
     HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -40,7 +38,6 @@ private fun provideOkHttp(httpLoggingInterceptor: HttpLoggingInterceptor): OkHtt
     }
     return okHttpClient.build()
 }
-
 
 private fun provideRetrofit(okHttpClient: OkHttpClient): ApiService {
     val retrofit = Retrofit.Builder()

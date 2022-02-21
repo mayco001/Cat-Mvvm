@@ -9,6 +9,6 @@ data class CatsResponse(
     @Json(name = "created_at")
     var created_at: String?,
 
-    @Json(name = "tags")
-    var tags: List<String>?
+//    @Json(name = "tags")
+//    var tags: List<String>?
 )

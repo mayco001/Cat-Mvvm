@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mayco.catmvvm.network.response.response.CatsResponse
 import com.mayco.catmvvm.repository.CatsRepository
-import kotlinx.coroutines.*
+import kotlinx.coroutines.* // ktlint-disable no-wildcard-imports
 import kotlin.coroutines.CoroutineContext
 
 class HomeViewModel(private val repository: CatsRepository) : ViewModel(), CoroutineScope {
@@ -30,7 +30,7 @@ class HomeViewModel(private val repository: CatsRepository) : ViewModel(), Corou
                     print(response)
                 }
             } catch (e: Throwable) {
-              print(e)
+                print(e)
             }
         }
     }
