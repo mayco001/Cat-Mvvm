@@ -11,14 +11,11 @@ import com.mayco.catmvvm.R
 import com.mayco.catmvvm.network.response.response.CatsResponse
 import kotlin.properties.Delegates
 
-
 class CatsAdapter : RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
-
 
     var items: List<CatsResponse> by Delegates.observable(emptyList()) { _, old, new ->
         if (old != new) notifyDataSetChanged()
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatsViewHolder {
         return CatsViewHolder(
@@ -36,7 +33,6 @@ class CatsAdapter : RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         return items.size
     }
 
-
     class CatsViewHolder(
         itemView: View,
     ) : RecyclerView.ViewHolder(itemView) {
@@ -52,9 +48,6 @@ class CatsAdapter : RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
                 .applyDefaultRequestOptions(requestOptions)
                 .load("https://cataas.com/c/" + cat.id)
                 .into(imageCat)
-
         }
-
-
     }
 }
