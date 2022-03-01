@@ -5,10 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mayco.catmvvm.network.response.response.CatsResponse
 import com.mayco.catmvvm.repository.CatsRepository
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.* // ktlint-disable no-wildcard-imports
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class HomeViewModel(private val repository: CatsRepository) : ViewModel(), CoroutineScope {
+@HiltAndroidApp
+class HomeViewModel @Inject constructor(private val repository: CatsRepository) :
+    ViewModel(),
+    CoroutineScope {
 
     private val job = Job()
     override val coroutineContext: CoroutineContext
